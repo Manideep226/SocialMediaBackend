@@ -50,4 +50,13 @@ public class PostsServiceImpl implements PostsService {
         else
             return null;
     }
+
+    @Override
+    public List<PostsDetails> getPostsByKeyword(String keyword) {
+        List<PostsDetails> postsDetails = postsRepository.findPostsByKeyword(keyword);
+        if(postsDetails.size()!=0)
+            return postsDetails;
+        else
+            return null;
+    }
 }

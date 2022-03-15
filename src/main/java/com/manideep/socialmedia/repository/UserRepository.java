@@ -11,4 +11,10 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User,Integer> {
     @Query(value="select p from User p")
     List<User> getAllUsers();
+
+    List<User> findUserByNameContainingIgnoreCase(String name);
+
+    @Query(value="select p from User p where p.name LIKE CONCAT('%',:name,'%') and p.mobile LIKE CONCAT('%',:mobile,'%')")
+    List<User> findUserByMultiParam(String name, String mobile);
+
 }

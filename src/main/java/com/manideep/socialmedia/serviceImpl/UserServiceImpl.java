@@ -24,4 +24,18 @@ public class UserServiceImpl implements UserService {
     public List<User> getUsers() {
         return userRepository.getAllUsers();
     }
+
+    @Override
+    public List<User> getUserByName(String name) {
+        List<User> userdetails = userRepository.findUserByNameContainingIgnoreCase(name);
+        return userdetails;
+    }
+
+    @Override
+    public List<User> getUserByMultipleParamaters(String name, String mobile) {
+        List<User> userdetails = userRepository.findUserByMultiParam(name,mobile);
+        return userdetails;
+    }
+
+
 }

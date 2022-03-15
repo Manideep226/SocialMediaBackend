@@ -53,4 +53,14 @@ public class PostsController {
         else
             return new ResponseEntity<>("No posts yet",HttpStatus.NOT_FOUND);
     }
+
+    //fetch all posts
+    @GetMapping("/get-by-keyword")
+    public ResponseEntity<?> getPostsByKeyword(@RequestParam(value = "keyword") String keyword){
+        List<PostsDetails> postsDetails = postsService.getPostsByKeyword(keyword);
+        if(Objects.nonNull(postsDetails))
+            return new ResponseEntity<>(postsDetails,HttpStatus.OK);
+        else
+            return new ResponseEntity<>("No posts with keyword : "+keyword,HttpStatus.NOT_FOUND);
+    }
 }

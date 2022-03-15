@@ -21,5 +21,5 @@ public class PostsDetails {
     private int groupid;
 
     @Column(name = "postcontent")
-    private String postContent;
+    private String postcontent;
 }

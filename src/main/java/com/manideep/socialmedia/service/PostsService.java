@@ -14,4 +14,6 @@ public interface PostsService {
     List<PostsDetails> getPostsByGroup(int groupid);
 
     List<PostsDetails> getAllPosts();
+
+    List<PostsDetails> getPostsByKeyword(String keyword);
 }

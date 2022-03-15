@@ -10,4 +10,8 @@ public interface UserService {
     User saveUser(User user);
 
     List<User> getUsers();
+
+    List<User> getUserByName(String name);
+
+    List<User> getUserByMultipleParamaters(String name, String mobile);
 }
