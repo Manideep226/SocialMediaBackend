@@ -5,6 +5,7 @@ import com.manideep.socialmedia.repository.UserRepository;
 import com.manideep.socialmedia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -33,6 +34,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUserByMultipleParamaters(String name, String mobile) {
+        if(StringUtils.isEmpty(mobile))
+            mobile="";
+        if(StringUtils.isEmpty(name))
+            name="";
         List<User> userdetails = userRepository.findUserByMultiParam(name,mobile);
         return userdetails;
     }

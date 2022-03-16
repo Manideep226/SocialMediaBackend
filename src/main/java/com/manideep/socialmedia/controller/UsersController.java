@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.xml.ws.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -32,14 +33,14 @@ public class UsersController {
 
     //get user by name
     @GetMapping("/getusers")
-    public ResponseEntity<List<User>> getUserByName(@RequestParam(value="name") String name) {
+    public ResponseEntity<List<User>> getUserByName(@RequestParam(value="username",required = true) String name) {
         List<User> userdetails = userService.getUserByName(name);
         return new ResponseEntity<>(userdetails, HttpStatus.OK);
     }
 
     //get user by name
     @GetMapping("/getusers-miltiple")
-    public ResponseEntity<List<User>> getUserByMultipleParamaters(@RequestParam(value="name") String name, @RequestParam(value="mobile") String mobile) {
+    public ResponseEntity<List<User>> getUserByMultipleParamaters(@RequestParam(value="name",required = false) String name, @RequestParam(value="mobile",required = false) String mobile) {
         List<User> userdetails = userService.getUserByMultipleParamaters(name, mobile);
         return new ResponseEntity<>(userdetails, HttpStatus.OK);
     }

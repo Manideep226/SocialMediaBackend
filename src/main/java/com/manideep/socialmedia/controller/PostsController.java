@@ -56,7 +56,7 @@ public class PostsController {
 
     //fetch all posts
     @GetMapping("/get-by-keyword")
-    public ResponseEntity<?> getPostsByKeyword(@RequestParam(value = "keyword") String keyword){
+    public ResponseEntity<?> getPostsByKeyword(@RequestParam(value = "keyword", required = true) String keyword){
         List<PostsDetails> postsDetails = postsService.getPostsByKeyword(keyword);
         if(Objects.nonNull(postsDetails))
             return new ResponseEntity<>(postsDetails,HttpStatus.OK);
